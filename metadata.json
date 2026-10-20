@@ -1,0 +1,6 @@
+{
+  "name": "SocialFlow AI",
+  "description": "Autonomous AI-powered personal and enterprise social media management platform with smart research, multi-platform publishing, and configurable approvals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

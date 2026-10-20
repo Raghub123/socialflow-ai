@@ -1,3 +1,4 @@
+
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "socialflow-ai",
@@ -7,5 +8,12 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "socialflow-db",
+      "database_id": "a75caf8a-26bf-4001-8d0b-5ac4c6e9f1c1"
+    }
+  ]
 }

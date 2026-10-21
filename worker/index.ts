@@ -52,10 +52,10 @@ export default {
     if (path === "/api/health") {
       return json({ status: "ok", app: "SocialFlow AI" });
     }
-    if (path === "/api/gemini-check") {
+    if (path === "/api/-check") {
       return json({
-        secretConfigured: Boolean(env.GEMINI_API_KEY),
-        deploymentMarker: "gemini-check-v1"
+        secretConfigured: Boolean(env._API_KEY),
+        deploymentMarker: "-check-v1"
       });
     }
 
@@ -265,11 +265,11 @@ export default {
           : json({ error: "Post is not pending approval" }, 409);
       }
 
-      // REAL GEMINI CONTENT GENERATION
+      // REAL  CONTENT GENERATION
 
       if (path === "/api/ai/command" && method === "POST") {
-        if (!env.GEMINI_API_KEY) {
-          return json({ error: "Gemini key not configured" }, 503);
+        if (!env._API_KEY) {
+          return json({ error: " key not configured" }, 503);
         }
 
         const b = await body(request);
@@ -339,11 +339,11 @@ Required JSON structure:
         const controller = new AbortController();
         const timeout = setTimeout(() => controller.abort(), 20000);
 
-        let geminiResponse: Response;
+        let Response: Response;
 
         try {
-          geminiResponse = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+          Response = await fetch(
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent",
             {
               method: "POST",
               headers: {

@@ -52,6 +52,12 @@ export default {
     if (path === "/api/health") {
       return json({ status: "ok", app: "SocialFlow AI" });
     }
+    if (path === "/api/gemini-check") {
+      return json({
+        secretConfigured: Boolean(env.GEMINI_API_KEY),
+        deploymentMarker: "gemini-check-v1"
+      });
+    }
 
     if (path === "/api/db-health") {
       try {

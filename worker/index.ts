@@ -55,6 +55,26 @@ export default {
         );
       }
     }
+    
+    // Read workspaces from Cloudflare D1
+    if (url.pathname === "/api/workspaces") {
+      if (request.method !== "GET") {
+        return Response.json(
+          { error: "Method not allowed" },
+          { status: 405 }
+        );
+      }
+
+      // Temporary security guard:
+      // Do not expose workspace data before authentication.
+      return Response.json(
+        {
+          error: "Authentication required",
+          message: "Workspace access will be enabled after authentication is configured"
+        },
+        { status: 401 }
+      );
+    }
 
     // APIs that have not been migrated yet
     if (url.pathname.startsWith("/api/")) {
